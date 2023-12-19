@@ -18,7 +18,7 @@ class Solution {
             if (p2 < 0) {
                 break;
             }
-            nums1[w] = p1 >= 0 && p2>= 0 && (nums1[p1] > nums2[p2]) ? nums1[p1--] : nums2[p2--];
+            nums1[w] = p1 >= 0 && p2 >= 0 && (nums1[p1] > nums2[p2]) ? nums1[p1--] : nums2[p2--];
             System.out.println("Array Status: " + Arrays.toString(nums1) + " Pointer 1: " + p1 + " Pointer 2: " + p2);
         }
         System.out.println("Result: " + Arrays.toString(nums1));

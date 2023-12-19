@@ -10,29 +10,27 @@ class Solution {
         System.out.println(Arrays.toString(nums1));
     }
 
-    // Approach 2: Three Pointers (Start From the Beginning)
+    // Approach 2: Three Pointers (Start From the Beginning)(OPTIMAL SOLUTION)
     public void pointers(int[] nums1, int m, int[] nums2, int n) {
-        int r1 = m - 1;
-        int r2 = n - 1;
-
+        int p1 = m - 1;
+        int p2 = n - 1;
         for (int w = (m + n) - 1; w >= 0; w--) {
-            if (r1 >= 0 && r2 >= 0) {
-                nums1[w] = nums1[m] > nums2[n] ? nums1[r1--] : nums2[r2--];
-            } else if (r1 >= 0) {
-                nums1[w] = nums1[r1--];
-            } else {
-                nums1[w] = nums1[r2--];
+            if (p2 < 0) {
+                break;
             }
+            nums1[w] = p1 >= 0 && p2>= 0 && (nums1[p1] > nums2[p2]) ? nums1[p1--] : nums2[p2--];
+            System.out.println("Array Status: " + Arrays.toString(nums1) + " Pointer 1: " + p1 + " Pointer 2: " + p2);
         }
-
+        System.out.println("Result: " + Arrays.toString(nums1));
     }
 
     public static void main(String[] args) {
-        Solution sol = new Solution();
+        Solution solution = new Solution();
         int[] nums1 = { 1, 2, 3, 0, 0, 0 };
         int m = 3;
         int[] nums2 = { 2, 5, 6 };
         int n = 3;
-        sol.merge(nums1, m, nums2, n);
+        solution.merge(nums1, m, nums2, n);
+        solution.pointers(nums1, m, nums2, n);
     }
 }

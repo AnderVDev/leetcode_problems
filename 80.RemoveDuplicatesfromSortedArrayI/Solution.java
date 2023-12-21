@@ -1,20 +1,24 @@
+import java.util.Arrays;
 public class Solution {
 
     public int removeDuplicates(int[] nums) {
-        int writer = 1;
+        int writer = 1, counter = 1;
         for (int reader = 1; reader < nums.length; reader++) {
-            if (nums[reader - 1] != nums[reader] || (reader > 2 && nums[reader - 2] != nums[reader - 1])) {
+
+            counter = nums[reader - 1] == nums[reader] ? counter++ : 1;
+
+            if (counter <= 2) {
                 nums[writer++] = nums[reader];
             }
+            System.out.println("Array Status: " + Arrays.toString(nums));
         }
-
+        System.out.println("Result: " + Arrays.toString(nums));
         return writer;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int [] nums = {1,1,1,2,2,3};
+        int[] nums = { 1, 1, 1, 2, 2, 3 };
         solution.removeDuplicates(nums);
     }
-
 }

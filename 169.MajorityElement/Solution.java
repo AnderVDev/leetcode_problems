@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Solution {
@@ -18,22 +19,27 @@ public class Solution {
     // }
 
     // Approach 2: HashMap
-    private HashMap<Integer, Integer> countNums(int[] nums) {
-        HashMap<Integer, Integer> counts = new HashMap<Integer, Integer>();
-        for (int num : nums) {
-            counts.put(num, !counts.containsKey(num) ? 1 : counts.get(num) + 1);
-        }
-        return counts;
-    }
+    // private HashMap<Integer, Integer> countNums(int[] nums) {
+    //     HashMap<Integer, Integer> counts = new HashMap<Integer, Integer>();
+    //     for (int num : nums) {
+    //         counts.put(num, !counts.containsKey(num) ? 1 : counts.get(num) + 1);
+    //     }
+    //     return counts;
+    // }
 
+    // public int majorityElement(int[] nums) {
+    //     HashMap<Integer, Integer> counts = countNums(nums);
+    //     for (int key : counts.keySet()) {
+    //         if (counts.get(key) > nums.length / 2)
+    //             return key;
+    //     }
+    //     return -1;
+    // }
+
+    // Approach 3: Sorting
     public int majorityElement(int[] nums) {
-        HashMap<Integer, Integer> counts = countNums(nums);
-
-        for (int key : counts.keySet()) {
-            if (counts.get(key) > nums.length / 2)
-                return key;
-        }
-        return -1;
+        Arrays.sort(nums);
+        return nums[nums.length/2];
     }
 
     public static void main(String[] args) {
